@@ -78,4 +78,4 @@ The **Tic-Tac-Toe Game** is a desktop application focused on game logic architec
 ### Installation
 1. **Clone the repository:**
    ```bash
-   git clone [https://github.com/aimanameenmohammed/Tic-Tac-Toe-Game.git](https://github.com/aimanameenmohammed/Tic-Tac-Toe-Game.git)
+   git clone [https://github.com/aimanameenmohammed/Tic-Tac-Toe-Game.git]
