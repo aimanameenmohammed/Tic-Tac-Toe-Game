@@ -1,271 +1,569 @@
-<div align="center">🎮 Tic-Tac-Toe Game
+# 🎮 Tic-Tac-Toe Game
 
-A clean two-player Tic-Tac-Toe desktop game built with C# and Windows Forms.
+<div align="center">
 
-<p>
-  <a href="https://github.com/aimanameenmohammed/Tic-Tac-Toe-Game">
-    <img src="https://img.shields.io/badge/GitHub-Repository-181717?style=for-the-badge&logo=github" alt="GitHub Repository">
-  </a>
-  <img src="https://img.shields.io/badge/C%23-Programming%20Language-239120?style=for-the-badge&logo=csharp&logoColor=white" alt="C#">
-  <img src="https://img.shields.io/badge/.NET%20Framework-4.7.2-512BD4?style=for-the-badge&logo=.net&logoColor=white" alt=".NET Framework 4.7.2">
-  <img src="https://img.shields.io/badge/Windows%20Forms-Desktop%20Application-0078D4?style=for-the-badge&logo=windows&logoColor=white" alt="Windows Forms">
-  <img src="https://img.shields.io/badge/License-MIT-2ea44f?style=for-the-badge" alt="MIT License">
-</p><p>
-  <strong>A practical C# project focused on event-driven programming, game-state management, conditional logic, and Windows Forms UI development.</strong>
-</p></div>---
+### 🎯 A Classic Two-Player Game Built with C# & Windows Forms
 
-📌 Overview
+A simple and interactive desktop Tic-Tac-Toe game focused on clean game-state management, event-driven programming, and practical C# development.
 
-Tic-Tac-Toe Game is a two-player desktop application developed using C# and Windows Forms on .NET Framework 4.7.2.
+<br>
 
-The project implements the complete gameplay cycle of a classic 3×3 Tic-Tac-Toe game: players take alternating turns, the application validates moves, detects winning combinations, identifies draws, highlights the winning cells, and allows the board to be reset for a new game.
+<a href="https://github.com/aimanameenmohammed/Tic-Tac-Toe-Game">
+<img src="https://img.shields.io/badge/GitHub-Repository-181717?style=for-the-badge&logo=github&logoColor=white">
+</a>
 
-The project was built as a practical exercise to strengthen understanding of C# fundamentals, event-driven programming, enums, structs, methods, control events, resource management, and game-state logic.
+<img src="https://img.shields.io/badge/C%23-.NET-blue?style=for-the-badge&logo=csharp&logoColor=white">
 
----
+<img src="https://img.shields.io/badge/.NET%20Framework-4.7.2-512BD4?style=for-the-badge&logo=.net&logoColor=white">
 
-✨ Features
+<img src="https://img.shields.io/badge/Windows%20Forms-Desktop%20Application-0078D4?style=for-the-badge&logo=windows&logoColor=white">
 
-- 🎮 Two-Player Local Gameplay — Player 1 uses X and Player 2 uses O.
-- 🔄 Automatic Turn Switching — The active player changes after every valid move.
-- 🚫 Invalid Move Detection — Prevents selecting an already occupied cell and displays an error message.
-- 🧠 Win Detection — Checks all possible horizontal, vertical, and diagonal winning combinations.
-- 🏆 Winner Identification — Determines whether Player 1 or Player 2 won.
-- 🟩 Winning Combination Highlight — Winning cells are visually highlighted when a player wins.
-- 🤝 Draw Detection — Detects when all nine cells are occupied without a winner.
-- 📊 Game Status Display — Shows the current turn and final game result.
-- 🔁 Reset Game — Clears the board and restores the game to its initial state.
-- 🎨 Custom UI — Dark-themed interface with custom X, O, and empty-cell resources.
-- 🖱️ Event-Driven Interaction — Board buttons share a centralized click handler for move processing.
+<img src="https://img.shields.io/badge/License-MIT-2ea44f?style=for-the-badge">
+
+<br><br>
+
+**Learn → Build → Debug → Understand → Improve**
+
+</div>
 
 ---
 
-🖼️ Game Interface
+## 📌 Table of Contents
 
-<div align="center"><img src="Tic-Tac-Toe%20Game%20Interface.png" alt="Tic-Tac-Toe Game Interface" width="850"></div>---
-
-🛠️ Technologies Used
-
-Technology| Purpose
-C#| Application and game logic
-.NET Framework 4.7.2| Runtime and application framework
-Windows Forms| Desktop graphical user interface
-Visual Studio| Development environment
-System.Drawing| Custom board drawing and visual styling
-WinForms Resources| X, O, and empty-cell images
-
----
-
-🧠 Game Logic
-
-The game keeps track of its current state through a small set of dedicated types.
-
-Player State
-
-An "ePlayer" enum identifies whose turn it is:
-
-- "Player1"
-- "Player2"
-
-Game Result
-
-An "eWinner" enum represents the current result:
-
-- "Player1"
-- "Player2"
-- "Draw"
-- "GameInProgress"
-
-Game Status
-
-The "stGamestatus" structure stores the main runtime state:
-
-- "Winner"
-- "GameOver"
-- "Playcount"
-
-Winning Conditions
-
-After every valid move, the application checks the eight possible winning combinations:
-
-- 3 horizontal rows
-- 3 vertical columns
-- 2 diagonals
-
-When a winning combination is found, the corresponding cells are highlighted and the game ends.
-
-If all 9 moves are completed without a winner, the game is declared a draw.
+- [📖 Overview](#-overview)
+- [✨ Features](#-features)
+- [🖼️ Game Interface](#️-game-interface)
+- [🎮 How the Game Works](#-how-the-game-works)
+- [🧠 Game Logic](#-game-logic)
+- [🏗️ Project Structure](#️-project-structure)
+- [🛠️ Technologies](#️-technologies)
+- [🚀 Getting Started](#-getting-started)
+- [🎯 How to Play](#-how-to-play)
+- [📚 Concepts Applied](#-concepts-applied)
+- [🔮 Future Improvements](#-future-improvements)
+- [👨‍💻 Author](#-author)
+- [📄 License](#-license)
 
 ---
 
-🏗️ Project Structure
+## 📖 Overview
 
+**Tic-Tac-Toe Game** is a two-player desktop application developed using **C#**, **Windows Forms**, and **.NET Framework 4.7.2**.
+
+The application recreates the classic 3×3 Tic-Tac-Toe game where two players take turns placing their symbols on the board:
+
+- ❌ **Player 1** plays with **X**
+- ⭕ **Player 2** plays with **O**
+
+After every valid move, the application updates the active player and checks whether the move produced a winning combination.
+
+The game automatically detects:
+
+- 🏆 Player 1 wins
+- 🏆 Player 2 wins
+- 🤝 Draw
+- ⏳ Game still in progress
+
+When a player wins, the three winning cells are highlighted and the game ends. If all nine cells are occupied without a winner, the game is declared a draw.
+
+The project was built as a practical C# application to strengthen understanding of **event-driven programming, enums, structures, methods, conditional logic, state management, Windows Forms controls, and resource handling**.
+
+---
+
+## ✨ Features
+
+### 🎮 Two-Player Gameplay
+
+Supports local gameplay between two players on the same computer.
+
+- Player 1 → ❌ X
+- Player 2 → ⭕ O
+
+### 🔄 Automatic Turn Switching
+
+After every valid move, the active player automatically changes.
+
+```text
+Player 1
+   ↓
+Places X
+   ↓
+Player 2
+   ↓
+Places O
+   ↓
+Player 1
+````
+
+### 🚫 Invalid Move Detection
+
+A player cannot select a cell that has already been occupied.
+
+When an occupied cell is selected, the application displays an error message instead of changing the existing move.
+
+### 🏆 Win Detection
+
+The application checks all possible winning combinations:
+
+* 3 horizontal rows
+* 3 vertical columns
+* 2 diagonal combinations
+
+Total:
+
+```text
+8 Possible Winning Combinations
+```
+
+### 🟩 Winning Cell Highlight
+
+When a winning combination is detected, the three corresponding cells are highlighted to make the winning move visually clear.
+
+### 🤝 Draw Detection
+
+If all nine cells are occupied and no player has won, the game automatically ends as a draw.
+
+### 📊 Game Status
+
+The interface displays:
+
+* Current player's turn
+* Winner
+* Game status
+* Game over state
+
+### 🔁 Reset Game
+
+The **Reset Game** button restores the board to its initial state:
+
+* Clears all moves
+* Resets the move counter
+* Returns the turn to Player 1
+* Clears the winner state
+* Restores the game status to `In Progress`
+
+### 🎨 Custom Game Interface
+
+The application uses custom graphical resources for:
+
+* ❌ X
+* ⭕ O
+* ❓ Empty cell
+
+The board itself is also drawn programmatically using `System.Drawing`.
+
+---
+
+## 🖼️ Game Interface
+
+<div align="center">
+
+<img src="Tic-Tac-Toe%20Game%20Interface.png" alt="Tic-Tac-Toe Game Interface" width="850">
+
+<br><br>
+
+<strong>Tic-Tac-Toe Game Interface</strong>
+
+</div>
+
+---
+
+## 🎮 How the Game Works
+
+The game starts with **Player 1**.
+
+Each player selects an empty cell on the 3×3 board.
+
+```text
+                    ┌─────────────────┐
+                    │   Start Game    │
+                    └────────┬────────┘
+                             │
+                             ▼
+                    ┌─────────────────┐
+                    │    Player 1     │
+                    │       X         │
+                    └────────┬────────┘
+                             │
+                             ▼
+                    ┌─────────────────┐
+                    │  Select Empty   │
+                    │      Cell       │
+                    └────────┬────────┘
+                             │
+                             ▼
+                    ┌─────────────────┐
+                    │ Check Winner    │
+                    └────────┬────────┘
+                             │
+                  ┌──────────┴──────────┐
+                  │                     │
+                Winner                 No Winner
+                  │                     │
+                  ▼                     ▼
+            ┌───────────┐       ┌──────────────┐
+            │ Game Over │       │ Switch Turn  │
+            └───────────┘       └──────┬───────┘
+                                       │
+                                       ▼
+                                 Next Player
+```
+
+After every valid move, the application checks the board before allowing the next player to continue.
+
+---
+
+## 🧠 Game Logic
+
+The game state is managed using dedicated C# types.
+
+### 👥 Player State
+
+The `ePlayer` enum determines whose turn it is:
+
+```csharp
+enum ePlayer
+{
+    Player1,
+    Player2
+}
+```
+
+### 🏆 Winner State
+
+The `eWinner` enum represents the current game result:
+
+```csharp
+enum eWinner
+{
+    Player1,
+    Player2,
+    Draw,
+    GameInProgress
+}
+```
+
+### 📊 Game Status
+
+The `stGamestatus` structure stores the main state of the current game:
+
+```csharp
+struct stGamestatus
+{
+    public eWinner Winner;
+    public bool GameOver;
+    public short Playcount;
+}
+```
+
+This allows the application to keep track of:
+
+* Current winner
+* Whether the game has ended
+* Number of moves played
+
+---
+
+### 🔍 Checking Winning Combinations
+
+After every valid move, the application checks the eight possible winning combinations.
+
+#### Horizontal
+
+```text
+[1] [2] [3]
+[4] [5] [6]
+[7] [8] [9]
+```
+
+Checks:
+
+```text
+1 ─ 2 ─ 3
+4 ─ 5 ─ 6
+7 ─ 8 ─ 9
+```
+
+#### Vertical
+
+```text
+1 │ 2 │ 3
+4 │ 5 │ 6
+7 │ 8 │ 9
+```
+
+Checks:
+
+```text
+1 │ 4 │ 7
+2 │ 5 │ 8
+3 │ 6 │ 9
+```
+
+#### Diagonal
+
+Checks:
+
+```text
+1 ─── 5 ─── 9
+```
+
+and:
+
+```text
+3 ─── 5 ─── 7
+```
+
+This gives the game its complete **8-combination win detection system**.
+
+---
+
+### 🚫 Preventing Invalid Moves
+
+Every board button starts with the tag:
+
+```text
+?
+```
+
+When a player selects an empty cell, the application replaces the tag with:
+
+```text
+x
+```
+
+or:
+
+```text
+o
+```
+
+If the cell is selected again, the application detects that the tag is no longer `?` and displays an error message.
+
+---
+
+### 🔢 Move Counter
+
+Every valid move increments:
+
+```text
+Playcount
+```
+
+When:
+
+```text
+Playcount == 9
+```
+
+and no winner has already been detected, the application declares the result as:
+
+```text
+Draw
+```
+
+---
+
+## 🏗️ Project Structure
+
+```text
 Tic-Tac-Toe-Game/
 │
-├── Form1.cs
-├── Form1.Designer.cs
-├── Form1.resx
-├── Program.cs
-├── App.config
+├── 📄 Program.cs
+├── 📄 Form1.cs
+├── 📄 Form1.Designer.cs
+├── 📄 Form1.resx
+├── 📄 App.config
 │
-├── Properties/
-│   ├── AssemblyInfo.cs
-│   ├── Resources.resx
-│   ├── Resources.Designer.cs
-│   ├── Settings.settings
-│   └── Settings.Designer.cs
+├── 📁 Properties/
+│   ├── 📄 AssemblyInfo.cs
+│   ├── 📄 Resources.resx
+│   ├── 📄 Resources.Designer.cs
+│   ├── 📄 Settings.settings
+│   └── 📄 Settings.Designer.cs
 │
-├── Resources/
-│   ├── X.png
-│   ├── O.png
-│   └── question-mark-96.png
+├── 📁 Resources/
+│   ├── 🖼️ X.png
+│   ├── 🖼️ O.png
+│   ├── 🖼️ question-mark-96.png
+│   ├── 🖼️ IMG-20260228-WA0089.jpg
+│   └── 🖼️ IMG-20260228-WA0090.jpg
 │
-├── Tic-Tac-Toe Game Interface.png
-├── LICENSE.txt
-└── README.md
+├── 🖼️ Tic-Tac-Toe Game Interface.png
+│
+├── 📄 MyProjectGameH.csproj
+├── 📄 MyProjectGameH.sln
+├── 📄 .gitignore
+├── 📄 .gitattributes
+├── 📄 LICENSE.txt
+└── 📄 README.md
+```
 
 ---
 
-🔍 Important Implementation Details
+## 🛠️ Technologies
 
-Centralized Button Handling
-
-All nine board buttons use the same click event:
-
-private void button_Click(object sender, EventArgs e)
-{
-    ChangeImage((Button)sender);
-}
-
-This keeps move handling centralized instead of creating separate logic for every cell.
-
-Turn Management
-
-The application starts with Player 1 and switches the active player after every valid move.
-
-Player 1 (X)
-     ↓
-Valid Move
-     ↓
-Player 2 (O)
-     ↓
-Valid Move
-     ↓
-Player 1 (X)
-
-Game Reset
-
-The reset operation restores:
-
-- All nine cells to the empty state
-- Move counter to "0"
-- Player turn to Player 1
-- Winner state to "GameInProgress"
-- Game status to active
-- UI labels to their initial values
+| Technology               | Purpose                                   |
+| :----------------------- | :---------------------------------------- |
+| **C#**                   | Main programming language                 |
+| **.NET Framework 4.7.2** | Application framework                     |
+| **Windows Forms**        | Desktop graphical user interface          |
+| **System.Drawing**       | Drawing the game board and visual styling |
+| **WinForms Resources**   | X, O, and empty-cell images               |
+| **Visual Studio**        | Development environment                   |
+| **Git & GitHub**         | Version control and project hosting       |
 
 ---
 
-🎮 How to Play
+## 🚀 Getting Started
 
-1. Launch the application.
-2. Player 1 starts with "X".
-3. Click any empty cell.
-4. The turn automatically switches to Player 2, who plays with "O".
-5. Continue alternating turns.
-6. The first player to align three symbols horizontally, vertically, or diagonally wins.
-7. If all nine cells are filled without a winner, the game ends in a draw.
-8. Press Reset Game to start a new round.
+### 📋 Prerequisites
+
+Before running the project, make sure you have:
+
+* Windows
+* Visual Studio 2019 or later
+* .NET Framework 4.7.2 Developer Pack
 
 ---
 
-🚀 Getting Started
+### 📥 Clone the Repository
 
-Prerequisites
-
-- Windows
-- Visual Studio 2019 or later
-- .NET Framework 4.7.2
-
-Clone the Repository
-
+```bash
 git clone https://github.com/aimanameenmohammed/Tic-Tac-Toe-Game.git
+```
 
-Open the Project
+Then open the project directory:
 
-Open:
+```bash
+cd Tic-Tac-Toe-Game
+```
 
+---
+
+### 🖥️ Open the Project
+
+Open the solution file:
+
+```text
 MyProjectGameH.sln
+```
 
-in Visual Studio.
-
-Run
-
-1. Build the solution.
-2. Set the project as the startup project.
-3. Press F5 or click Start.
-4. Start playing.
+using Visual Studio.
 
 ---
 
-📚 What This Project Demonstrates
+### ▶️ Run the Application
 
-This project provides practical experience with:
-
-- C# programming fundamentals
-- Object-oriented programming concepts
-- Windows Forms development
-- Event-driven programming
-- Enums and structures
-- Methods and parameter passing
-- Conditional logic
-- State management
-- Button/control interaction
-- Resource handling
-- Basic game algorithms
-- UI feedback and validation
-- Debugging and iterative development
+1. Open `MyProjectGameH.sln`.
+2. Build the solution.
+3. Set the project as the startup project if required.
+4. Press **F5** or select **Start**.
+5. The Tic-Tac-Toe game will launch.
 
 ---
 
-🔮 Possible Future Improvements
+## 🎯 How to Play
 
-The current version focuses on the core two-player gameplay. Possible future enhancements include:
-
-- 🧮 Score tracking across multiple rounds
-- 🤖 Player vs. Computer mode
-- 🧠 AI opponent using the Minimax algorithm
-- 🔊 Sound effects
-- ✨ Additional animations and UI feedback
-- ⚙️ Difficulty levels
-- 🏁 Match history and statistics
-- 🎨 Additional themes and visual customization
-
----
-
-📄 License
-
-This project is licensed under the MIT License.
-
-See the ""LICENSE.txt"" (LICENSE.txt) file for the complete license text.
+1. Start the application.
+2. **Player 1** starts with `X`.
+3. Click any empty cell.
+4. The turn automatically switches to **Player 2**.
+5. **Player 2** plays with `O`.
+6. Continue taking turns.
+7. The first player to align three symbols horizontally, vertically, or diagonally wins.
+8. The winning cells are highlighted.
+9. If all nine cells are filled without a winner, the game ends in a draw.
+10. Click **Reset Game** to start a new round.
 
 ---
 
-👨‍💻 Author
+## 📚 Concepts Applied
 
-<div align="center">Aiman Ameen Mohammed
+This project provided practical experience with several C# and Windows Forms concepts:
 
-C# .NET & C++ Developer | OOP & Database (SQL, ADO.NET) | Computer Science Student
+* 🧩 C# Programming Fundamentals
+* 🏗️ Object-Oriented Programming
+* 🖥️ Windows Forms Development
+* 🖱️ Event-Driven Programming
+* 🔘 Button Controls and Events
+* 🔄 Game State Management
+* 🧠 Conditional Logic
+* 🔢 Enums
+* 📦 Structures
+* 🔧 Methods
+* 🎯 Parameter Passing
+* 🔍 Validation
+* 🏆 Win Detection Algorithms
+* 🤝 Draw Detection
+* 🔁 Resetting Application State
+* 🎨 `System.Drawing`
+* 🖼️ Application Resources
+* 🐛 Debugging and Problem Solving
 
-<p>
-  <a href="https://github.com/aimanameenmohammed">GitHub</a> •
-  <a href="https://www.linkedin.com/in/aiman-ameen-2548673a8/">LinkedIn</a> •
-  <a href="https://t.me/AimanAmeenMohammed">Telegram</a> •
-  <a href="https://wa.me/967730062999">WhatsApp</a>
-</p></div>---
+---
 
-<div align="center">⭐ If you found this project useful, consider giving the repository a star.
+## 🔮 Future Improvements
 
-Learn → Build → Debug → Understand → Improve
+The current version focuses on the core two-player gameplay.
+
+Possible future improvements include:
+
+* 🤖 **Player vs Computer** mode
+* 🧠 **AI Opponent** using the Minimax algorithm
+* 🏆 **Score Tracking** across multiple rounds
+* 📊 **Game Statistics**
+* 🔊 **Sound Effects**
+* ✨ **Animations**
+* 🎚️ **Difficulty Levels**
+* 🎨 **Additional Themes**
+* 🕹️ **Game History**
+* ⚙️ **Improved User Experience**
+
+These are potential future enhancements and are **not part of the current version**.
+
+---
+
+## 👨‍💻 Author
+
+<div align="center">
+
+### Aiman Ameen Mohammed
+
+**Software Developer | C# | C++ | .NET | Database Development**
+
+<br>
+
+<a href="https://github.com/aimanameenmohammed">
+<img src="https://img.shields.io/badge/GitHub-aimanameenmohammed-181717?style=for-the-badge&logo=github&logoColor=white">
+</a>
+
+<a href="https://www.linkedin.com/in/aiman-ameen-2548673a8/">
+<img src="https://img.shields.io/badge/LinkedIn-Aiman%20Ameen%20Mohammed-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white">
+</a>
+
+</div>
+
+---
+
+## 📄 License
+
+This project is licensed under the **MIT License**.
+
+You can view the complete license here:
+
+**[📄 View LICENSE](LICENSE.txt)**
+
+---
+
+<div align="center">
+
+<br>
+
+<img src="https://capsule-render.vercel.app/api?type=rounded&color=0:141E30,100:243B55&height=100&section=footer&text=Learn.%20Build.%20Debug.%20Improve.&fontSize=24&fontColor=ffffff&animation=fadeIn" width="100%">
+
+<br>
+
+**Aiman Ameen Mohammed**
 
 </div>
