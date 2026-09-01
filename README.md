@@ -242,8 +242,8 @@ Tic-Tac-Toe-Game/
 
 | Milestone | Date |
 | :--- | :--- |
-| 🚀 **Started** | November 28, 2025 |
-| ✅ **Completed** | November 30, 2025 |
+| 🚀 **Started** | February 28, 2025 |
+| ✅ **Completed** | March 1, 2025 |
 | ⏱️ **Development Period** | 2 Days |
 
 
